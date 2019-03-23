@@ -1,4 +1,6 @@
 library(readxl)
+library(lubridate)
+
 wd <- getwd()
 location <- "/Piketty2014TechnicalAppendix/Piketty2014FiguresTables"
 chapter <- "/Chapter0TablesFigures.xlsx"
@@ -16,16 +18,19 @@ list2env(mylist ,.GlobalEnv)
 # Dataset 1:
 decile_share_us <- TSI.1[complete.cases(TSI.1),]
 names(decile_share_us) <- c("year", "percentage")
-#View(decile_share_us)
+decile_share_us$year <- lubridate::ymd(decile_share_us$year, truncated = 2L)
 
 # save to package
 devtools::use_data(decile_share_us, overwrite = T)
 
 # Dataset 2:
 capital_V_income_eu <- TSI.2[complete.cases(TSI.2),]
-#View(capital_V_income_eu)
 capital_V_income_eu <- capital_V_income_eu[-1,]
 names(capital_V_income_eu) <- c("year", "Germany", "France", "Britain")
+capital_V_income_eu$year <- lubridate::ymd(capital_V_income_eu$year, truncated = 2L)
+for(j in 2:4){
+    capital_V_income_eu[[j]] <- as.numeric(capital_V_income_eu[[j]])
+}
 
 #save to package
 devtools::use_data(capital_V_income_eu, overwrite = T)
