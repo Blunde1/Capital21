@@ -7,8 +7,6 @@ chapter_0_figures <- function(){
 
     chapter_0_data()
 
-    head(decile_share_us)
-
     FI.1 <- decile_share_us %>%
         ggplot +
         aes(x=year, y=percentage) +
