@@ -3,13 +3,19 @@ clean_chapter1 <- function(path=NULL){
 
     library(readxl)
     library(lubridate)
+    #library(dplyr)
 
-    clean <- function(dat, names, year2date, char2num){
+    clean <- function(dat, names, year2date=NULL, char2num=NULL){
         names(dat) <- names
-        if(dat[1,year2date]=="0") dat[1,year2date] <- "0000"
-        dat[[year2date]] <- lubridate::ymd(dat[[year2date]], truncated = 2L)
-        for(j in char2num){
-            dat[[j]] <- as.numeric(dat[[j]])
+        if(!is.null(year2date)){
+            if(dat[1,year2date]=="0") dat[1,year2date] <- "0000"
+            dat[[year2date]] <- lubridate::ymd(dat[[year2date]], truncated = 2L)
+            dat <- dat[order(dat[[year2date]]),]
+        }
+        if(!is.null(char2num)){
+            for(j in char2num){
+                dat[[j]] <- as.numeric(dat[[j]])
+            }
         }
         return(dat)
     }
@@ -36,18 +42,6 @@ clean_chapter1 <- function(path=NULL){
     list2env(mylist ,.GlobalEnv)
 
     ## cleaning
-
-    getNames <- function(data, rows){
-        subdat <- data[rows,]
-        coln <- character(ncol(data))
-        for(i in 1:ncol(data)){
-            for(j in 1:length(rows)){
-                coln[i] <- paste0(coln[i],data[j,i])
-            }
-        }
-        coln
-    }
-    getNames(data, 1:2)
 
     # T1.1
     dist_world_gdp <- T1.1[complete.cases(T1.1),]
@@ -111,8 +105,46 @@ clean_chapter1 <- function(path=NULL){
     devtools::use_data(world_population_detail, overwrite = T)
 
     # TS1.3
-    View(TS1.3)
+    #View(TS1.3)
+    per_capita_gdp <- clean(TS1.3[c(4:14,18),c(1,3:8)],
+                            unlist(c("Year", TS1.3[3, 3:8])),
+                            year2date = 1,
+                            char2num = 2:7)
+    devtools::use_data(per_capita_gdp, overwrite = T)
 
+    per_capita_gdp_count <- clean(TS1.3[ c(4:14, 18), c(1, 10:14)],
+                                  unlist(c("Year", TS1.3[3,10:14])),
+                                  year2date = 1,
+                                  char2num = 2:6)
+    devtools::use_data(per_capita_gdp_count, overwrite = T)
+
+    per_capita_gdp_detail <- clean(
+        dat = TS1.3[c(4:14, 18), c(1, 17:31)],
+        names = unlist(c("Year", TS1.3[3, 17:31])),
+        year2date = 1,
+        char2num = 2:16)
+    devtools::use_data(per_capita_gdp_detail, overwrite = T)
+
+    # TS1.4 = ROUNDED TS1.5
+    View(TS1.4); View(TS1.5)
+    dist_world_gdp_2012 <- clean(
+        dat = TS1.5[4:20,],
+        names = c("Region", "Population (millions)", "ppp_gdp", "ppp_per_capita_gdp", "ppp_per_capita_gdp_monthly",
+                  "cer_gdp", "cer_per_capita_gdp", "cer_per_capita_gdp_monthly"),
+        char2num = 2:8
+        )
+    devtools::use_data(dist_world_gdp_2012, overwrite = T)
+
+
+    # TS1.7
+    View(TS1.7)
+    er_ppp_1990_2012 <- clean(
+        dat = TS1.7[4:26, c(1:9, 11:22)],
+        names = unlist(c("Year", TS1.7[3,c(2:9, 11:22)])),
+        year2date = 1,
+        char2num = 2:21
+    )
+    devtools::use_data(er_ppp_1990_2012, overwrite = T)
 
 
 }
