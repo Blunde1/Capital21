@@ -158,5 +158,10 @@ chapter_1_data <- function(){
     data(world_population)
     data(world_population_count)
     data(world_population_detail)
+    data(per_capita_gdp)
+    data(per_capita_gdp_count)
+    data(per_capita_gdp_detail)
+    data(dist_world_gdp_2012)
+    data(er_ppp_1990_2012)
 }
 
