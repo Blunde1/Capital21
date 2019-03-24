@@ -2,7 +2,7 @@
 title: "Capital 21"
 author: "Berent Lunde"
 output: github_document
-fig.caption: yes
+fig.caption: true
 ---
 
 ```{r setup, include=FALSE}
@@ -37,18 +37,19 @@ library(Capital21)
 
 # Load and list chapter 0 data
 chapter_0_data()
-ls()
-rm(list=ls())
+```
 
-# Load and list chapter 1 data
-chapter_1_data()
-ls()
+> "The capital/income ratio in Europe, 1870-2010"
+
+```{r, warning=F, echo=FALSE, results='asis', fig.cap=T}
+library(knitr)
+kable(capital_V_income_eu, caption = "The capital/income ratio in Europe, 1870-2010")
 ```
 
 
 #### Reproducing figures
 
-```{r, message=FALSE, results='asis', warning=FALSE, error=FALSE}
+```{r, message=FALSE, results='asis', warning=FALSE, error=FALSE, fig.align='center', fig.width=6,  fig.height=3}
 # Packages for data wrangeling
 library(ggplot2)
 library(dplyr)
@@ -66,4 +67,14 @@ p <- capital_V_income_eu %>%
     scale_color_manual(values = c("black","red","blue")) +
     theme_minimal()
 p
+
+```
+
+#### Retrieve all figures from a chapter
+
+```{r, message=FALSE, results='asis', warning=FALSE, error=FALSE, fig.align='center', fig.width=6,  fig.height=3}
+# Typically relies on ggplot2 and dplyr
+chapter_0_figures()
+FI.1
+FI.2
 ```

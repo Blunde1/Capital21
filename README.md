@@ -28,24 +28,27 @@ library(Capital21)
 
 # Load and list chapter 0 data
 chapter_0_data()
-ls()
 ```
 
-\[1\] "capital\_V\_income\_eu" "decile\_share\_us"
+> "The capital/income ratio in Europe, 1870-2010"
 
-``` r
-rm(list=ls())
-
-# Load and list chapter 1 data
-chapter_1_data()
-ls()
-```
-
-\[1\] "dist\_world\_gdp" "dist\_world\_gdp\_2012"
-\[3\] "dist\_world\_output\_detailed" "dist\_world\_output\_percent" \[5\] "dist\_world\_output\_val" "er\_ppp\_1990\_2012"
-\[7\] "per\_capita\_gdp" "per\_capita\_gdp\_count"
-\[9\] "per\_capita\_gdp\_detail" "world\_population"
-\[11\] "world\_population\_count" "world\_population\_detail"
+| year       |   Germany|    France|   Britain|
+|:-----------|---------:|---------:|---------:|
+| 1870-01-01 |  6.438988|  6.992606|  6.961611|
+| 1880-01-01 |  6.443348|  7.328977|  6.367099|
+| 1890-01-01 |  5.923051|  7.264028|  6.092323|
+| 1900-01-01 |  6.112386|  7.261795|  6.499294|
+| 1910-01-01 |  6.042470|  6.994556|  6.725313|
+| 1920-01-01 |  2.591279|  3.300902|  4.412806|
+| 1930-01-01 |  3.068955|  3.438186|  5.079650|
+| 1940-01-01 |  2.664139|  3.172543|  3.990266|
+| 1950-01-01 |  1.656535|  2.185893|  3.127889|
+| 1960-01-01 |  2.093342|  2.797374|  3.128338|
+| 1970-01-01 |  2.294364|  3.114872|  3.144080|
+| 1980-01-01 |  2.844778|  3.204479|  3.503478|
+| 1990-01-01 |  3.134487|  3.413831|  4.282104|
+| 2000-01-01 |  3.766189|  4.742294|  4.955841|
+| 2010-01-01 |  4.116648|  5.745578|  5.218760|
 
 #### Reproducing figures
 
@@ -69,4 +72,20 @@ p <- capital_V_income_eu %>%
 p
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+<img src="README_files/figure-markdown_github/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+#### Retrieve all figures from a chapter
+
+``` r
+# Typically relies on ggplot2 and dplyr
+chapter_0_figures()
+FI.1
+```
+
+<img src="README_files/figure-markdown_github/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+``` r
+FI.2
+```
+
+<img src="README_files/figure-markdown_github/unnamed-chunk-5-2.png" style="display: block; margin: auto;" />
