@@ -14,6 +14,7 @@ get_figures <- function(chapter){
     library(scales)
     library(ggplot2)
     library(dplyr)
+    library(tidyr)
 
     if(chapter==0){
         chapter_0_data()

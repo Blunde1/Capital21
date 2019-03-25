@@ -8,7 +8,6 @@
 \describe{
   \item{Year}{date, only year is accurate}
   \item{Numeric values}{private capital / national income ratio}
-  ...
 }}
 \source{
 \url{http://piketty.pse.ens.fr/en/capital21c2}
@@ -17,6 +16,6 @@
 capital_V_income_eu
 }
 \description{
-Time series data containing the Private capital / national income ratio for Germany, France and Britain.
+Time series (1870-2010) data containing the Private capital / national income ratio for Germany, France and Britain.
 }
 \keyword{datasets}
