@@ -43,7 +43,7 @@ chapter_0_data()
 
 ```{r, warning=F, echo=FALSE, results='asis', fig.cap=T}
 library(knitr)
-kable(capital_V_income_eu, caption = "The capital/income ratio in Europe, 1870-2010")
+kable(capital_V_income_eu[1:4,], caption = "The capital/income ratio in Europe, 1870-2010")
 ```
 
 
@@ -74,7 +74,7 @@ p
 
 ```{r, message=FALSE, results='asis', warning=FALSE, error=FALSE, fig.align='center', fig.width=6,  fig.height=3}
 # Typically relies on ggplot2 and dplyr
-chapter_0_figures()
+get_figures(chapter = 0)
 FI.1
 FI.2
 ```
