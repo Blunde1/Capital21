@@ -1,11 +1,11 @@
-#' Retrieve all figures from chapter 0 in "Capital in the Twenty-First Century" by Thomas Piketty
+#' Retrieve all figures from a chapter in "Capital in the Twenty-First Century" by Thomas Piketty
 #'
 #' @param chapter numeric: chapter number.
 #' @return All figures in chapter \code{chapter}.
 #'
-#' Figure plotting relies on dplyr, ggplot2 and scales
+#' Figure plotting relies on dplyr, ggplot2, tidyr and scales
 #' @examples
-#' chapter_0_figures(chapter=0)
+#' get_figures(chapter=0)
 #' FI.1
 #' FI.2
 #'

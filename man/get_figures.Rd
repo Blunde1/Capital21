@@ -2,7 +2,7 @@
 % Please edit documentation in R/chapter1figures.R
 \name{get_figures}
 \alias{get_figures}
-\title{Retrieve all figures from chapter 0 in "Capital in the Twenty-First Century" by Thomas Piketty}
+\title{Retrieve all figures from a chapter in "Capital in the Twenty-First Century" by Thomas Piketty}
 \usage{
 get_figures(chapter)
 }
@@ -12,13 +12,13 @@ get_figures(chapter)
 \value{
 All figures in chapter \code{chapter}.
 
-Figure plotting relies on dplyr, ggplot2 and scales
+Figure plotting relies on dplyr, ggplot2, tidyr and scales
 }
 \description{
-Retrieve all figures from chapter 0 in "Capital in the Twenty-First Century" by Thomas Piketty
+Retrieve all figures from a chapter in "Capital in the Twenty-First Century" by Thomas Piketty
 }
 \examples{
-chapter_0_figures(chapter=0)
+get_figures(chapter=0)
 FI.1
 FI.2
 
