@@ -46,6 +46,9 @@ library(knitr)
 kable(capital_V_income_eu[1:4,], caption = "The capital/income ratio in Europe, 1870-2010")
 ```
 
+* **Datasets are correctly formatted for quick use in R**
+* **All datasets are documented**
+
 
 #### Reproducing figures
 

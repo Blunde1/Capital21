@@ -39,6 +39,9 @@ chapter_0_data()
 | 1890-01-01 |  5.923051|  7.264028|  6.092323|
 | 1900-01-01 |  6.112386|  7.261795|  6.499294|
 
+-   **Datasets are correctly formatted for quick use in R**
+-   **All datasets are documented**
+
 #### Reproducing figures
 
 ``` r
